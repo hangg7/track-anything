@@ -134,7 +134,7 @@ def point_painter(input_image, input_points, point_color=5, point_alpha=0.9, poi
 	painted_image = vis_add_mask(painted_image.copy(), 1-contour_mask, contour_color, 1)
 	return painted_image
 
-def mask_painter(input_image, input_mask, mask_color=5, mask_alpha=0.7, contour_color=1, contour_width=3):
+def mask_painter(input_image, input_mask, mask_color=5, mask_alpha=0.7, contour_color=1, contour_width=1):
 	assert input_image.shape[:2] == input_mask.shape, 'different shape between image and mask'
 	# 0: background, 1: foreground
 	mask = np.clip(input_mask, 0, 1)
@@ -161,7 +161,7 @@ def background_remover(input_image, input_mask):
 	input_image: H, W, 3, np.array
 	input_mask: H, W, np.array
 
-	image_wo_background: PIL.Image	
+	image_wo_background: PIL.Image
 	"""
 	assert input_image.shape[:2] == input_mask.shape, 'different shape between image and mask'
 	# 0: background, 1: foreground
